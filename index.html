@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>plough</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js" type="text/javascript" ></script>
+    <style>
+       @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Material Icons'),
+            local('MaterialIcons-Regular'),
+            url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+            url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+            url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+        }
+        .material-icons {
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;  /* Preferred icon size */
+          display: inline-block;
+          line-height: 1;
+          text-transform: none;
+          letter-spacing: normal;
+          word-wrap: normal;
+          white-space: nowrap;
+          direction: ltr;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          -moz-osx-font-smoothing: grayscale;
+          font-feature-settings: 'liga';
+        }
+      html, body {
+        padding: 0px;
+        margin: 100px 0px 0px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.5em;
+        width: 100%;
+      }
+      .viewpoint {
+        width: 90%;
+        margin-left: 5%;
+        height: 300px;
+        overflow: auto;
+      }
+    
+      .container{
+        width: 1800px;
+        text-align: left;
+        position: relative;
+      }
+      .icon  {
+        background-color: #e67e22;
+        width: 60px;
+        height: 60px;
+        color: #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        box-sizing: content-box;
+      }
+      .icon img  {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+      }
+      .timeline {
+        width: 100%;
+        position: absolute;
+        height: 5px;
+        background-color: #0090ee;
+        top: 65px;
+        cursor: crosshair;
+      }
+      .tooltip {
+        background: linear-gradient(rgba(0, 144, 238, 0.9) 0%, rgb(0, 144, 238) 30%, rgb(0, 144, 238) 100%);
+        display: inline-block;
+        padding: 1em;
+        position: absolute;
+        top: 100px;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .tiemspan {
+        position: absolute;
+        width: 15%;
+        left: 0px;
+        opacity: .8; 
+      }
+      .date {
+        position: absolute;
+        top: 65px;
+        color: #666;
+        padding-top: 5px;
+        padding-left: 2px;
+        border-left: 2px #0090ee solid;
+      }
+      .register {
+        left: 17%;
+        width: 20%;
+      }
+      .firstbuy {
+        left: 35%;
+        width: 30%;
+      }
+      .accumlate {
+        left: 60%;
+        width: 20%;
+      }
+      .today {
+        left: 100%; 
+      }
+      .emphsis {
+        color: #f1bc8d;
+        font-weight: 700;
+      }
+      .hovered {
+        opacity: 1;
+      }
+      .hovered > .tooltip, .hovered .icon  {
+        box-shadow:  0px 2px 14px 0px rgba(172, 50, 50, 0.75);
+      }
+      .cycle {
+       vertical-align: middle;
+       font-size: 30px;
+       padding-top: 15px;
+      }
+      /* #line {
+        width: 1800px;
+        
+        height: 145px;
+        left: 5%;
+        background-color:#666;
+        top: 65px;
+      } */
+
+      ul {
+          list-style-type: none; 
+          width: 70%;
+          margin-left: 2%;
+          text-align: left;
+      }
+      .segment {
+          width: 30%;
+          display: inline-block;
+          margin: .1em;
+      }
+      .segment > li {
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+        padding: .5em;
+        margin: 1em;
+      }
+      
+      .compare > li {
+          margin: 1em; 
+          border-bottom: 1px #ddd solid;
+      }
+      span {
+          font-weight: 300;
+          color: #666;
+      }
+
+      </style>
+     
+  </head>
+  <body>
+    <div class="viewpoint">
+    <div class="container">
+      <div class="tiemspan">
+         <div class="icon"> <img  src="http://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJEJmxSyp0nJLMibj9KQ4sJXictsoEJgEHrOMq20ibWYMZ5ZOHcGIYl88VngAQRnasSt3wRHAm0iaBZ0A/132" /></div>
+         <div class="date"> Sep 9 2017 </div> 
+         <div class="tooltip"> <i class="material-icons ">flag</i> She joined our website at <i class="emphsis">Sep 9 2017</i> <br /> using  <i class="emphsis">WeChat</i>  browser with <i class="emphsis"> Iphone 7</i><br />
+                               In that day, she viewed <i class="emphsis"> 6 pages</i>, <br /> stayed in <i class="emphsis"> 16 mins</i> </div>
+          </div>
+ 
+          <div class="tiemspan register">
+              <div class="icon">  <i class="material-icons cycle">account_box</i></div>
+              <div class="date"> Oct 9 2017 </div> 
+              <div class="tooltip"> <i class="material-icons">flag</i> She created an account at <i class="emphsis">Oct 9 2017</i> <br />
+                                 It's been <i class="emphsis">30 days</i> after visit our website </div>  
+                </div>
+ 
+           <div class="tiemspan firstbuy">
+              <div class="icon"> <i class="material-icons cycle"> shopping_cart </i></div>
+              <div class="date"> Oct 27 2017 </div> 
+              <div class="tooltip"> <i class="material-icons">flag</i> First puschase made on <i class="emphsis">Oct 27 2017</i> <br />
+                                                                        spent <i class="emphsis">￥13,232</i>  of 3 products  <br />
+                                                                        It's been <i class="emphsis">45 days</i> after visit our website </div>
+               </div>
+
+               <div class="tiemspan accumlate">
+                <div class="icon"> <i class="material-icons cycle">attach_money </i></div>
+                <div class="date"> Feb 2 2018 </div> 
+                <div class="tooltip"> <i class="material-icons">whatshot</i> After 94 days at <i class="emphsis">Feb 2 2018</i> <br />
+                                                                          She spent <i class="emphsis">￥100,000</i> in our website </div>
+                 </div>
+
+                 <div class="tiemspan today">
+                    <div class="icon"> <i class="material-icons cycle">today </i></div>
+                    <div class="date"> Feb 2 2018 </div> 
+                    <div class="tooltip"> <i class="material-icons">whatshot</i> After 94 days at <i class="emphsis">Feb 2 2018</i> <br />
+                                                                              She spent <i class="emphsis">￥100,000</i> in our website </div>
+                     </div>
+ 
+       <div class="timeline"></div>
+     
+    </div>
+
+    <canvas id="line"  width="1800px" height="300px"  style="position:absolute; left:5%; top:0; "   ></canvas>
+  </div>
+
+  <div style="display: left;">
+    <ul class="segment">
+        <li>
+            <h2>Metric</h2>
+            <ul class="compare">
+                    <li>
+                            <h4><a href="#"><span>Visit :</span>  1 </a></h4>
+                        </li>
+                <li>
+                    <h4><span>Page view :</span> 5</h4>
+                </li>
+                <li>
+                        <h4><span>eCommerce Visits :</span> 0</h4>
+                    </li>
+                <li>
+                        <h4> <span>Conversion :</span> 0</h4>
+                </li>
+                <li>
+                        <h4> <span>Avg Order Value:</span> ￥0.00</h4>
+                        </li>
+                    <li>
+                            <h4> <span> Totoal Order Value: </span>￥0.00</h4>
+                    </li>
+                    <li>
+                            <h4> <span> Achieve this milestone days: </span> 108   </h4>
+                    </li>
+            </ul>
+        </li> 
+    </ul>
+    <ul class="segment">
+            <li> <h2>  Vs other user </h2>
+
+            <ul class="compare">
+                    <li>
+                            <h4> <span>Visit :</span> 1  <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 12.5%</span> </h4> 
+                    </li>
+                    <li>
+                            <h4> <span>Page view :</span> 4   <span style="color: rgb(232, 44, 12); margin-left: 15px;">↓ 20.5%</span></h4>
+                    </li>
+                    <li>
+                            <h4> <span>eCommerce Visits :</span> 3  <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 12.5%</span> </h4>
+                        </li>
+                    <li>
+                            <h4> <span>Conversion :</span> 1   <span style="color: rgb(232, 44, 12); margin-left: 15px;">↓ 53.5%</span></h4>
+                    </li>
+                    <li>
+                            <h4> <span>Avg Order Value:</span>  ￥11.20   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                            </li>
+                        <li>
+                                <h4> <span> Totoal Order Value: </span> ￥52.00   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                        </li>
+                        <li>
+                                <h4> <span> Achieve this milestone days: </span> 83   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                        </li>
+                </ul>
+            </li>
+    </ul> 
+    <ul class="segment">
+            <li> <h2>  Vs other Wechat User </h2>
+
+                <ul class="compare">
+                        <li>
+                                <h4> <span>Visit :</span> 1  <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 12.5%</span> </h4> 
+                        </li>
+                        <li>
+                                <h4> <span>Page view :</span> 4   <span style="color: rgb(232, 44, 12); margin-left: 15px;">↓ 20.5%</span></h4>
+                        </li>
+                        <li>
+                                <h4> <span>eCommerce Visits :</span> 3  <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 12.5%</span> </h4>
+                            </li>
+                        <li>
+                                <h4> <span>Conversion :</span> 1   <span style="color: rgb(232, 44, 12); margin-left: 15px;">↓ 53.5%</span></h4>
+                        </li>
+                        <li>
+                                <h4> <span>Avg Order Value:</span>  ￥11.20   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                                </li>
+                            <li>
+                                    <h4> <span> Totoal Order Value: </span> ￥52.00   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                            </li>
+
+                            <li>
+                                    <h4> <span> Achieve this milestone days: </span> 83   <span style="color: rgb(0, 178, 51); margin-left: 15px;">↑ 67.5%</span></h4>
+                            </li>
+                    </ul>
+            </li>
+    </ul> 
+  </div>
+    <script>
+        $('.tooltip').mouseenter( e => {
+          $('.tiemspan').removeClass('hovered')
+          findTimeSpan($(e.target)).addClass('hovered')
+        })
+ 
+        findTimeSpan = $el => {
+          if ($el.hasClass('tiemspan')) {
+            return $el
+          } else {
+            return findTimeSpan($el.parent())
+          }
+        }
+        var layerX, layerY;
+        function drawingRect (event) {   
+            if (layerX && layerY) { 
+                var canvas = document.getElementById('line')
+                var ctx = canvas.getContext('2d')
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.fillStyle = 'rgba(157, 189, 198, .4)'
+                var x = event.pageX - layerX  - $(window).width() * .05
+                var y = event.pageY - layerY
+                console.log(`x: ${x}, y:${y}, layerX: ${layerX}, layerY: ${layerY}`)
+                ctx.fillRect(layerX, layerY, x, y)
+            }
+        } 
+
+        function beginDrawingRect (event) { 
+            layerX = event.pageX  - $(window).width() * .05
+            layerY = event.pageY
+            console.log(`layerX: ${layerX}, layerY: ${layerY}`)
+        } 
+
+        function endDrawingRect (event) {
+            layerX = null
+            layerY = null 
+        }
+
+        $('#line').on('mousedown', beginDrawingRect)
+        $('#line').on('mouseup', endDrawingRect)
+        $('#line').on('mousemove', drawingRect)
+        // $(function () {
+        //     window.begining = $('#line').offset();
+        // })
+    </script>
+  </body>
+</html>
